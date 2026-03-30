@@ -16,10 +16,10 @@ export default function StoreView({ items, onSelectItem }) {
       {/* Hero */}
       <div style={{ background: 'linear-gradient(135deg, var(--warm), #FFF5EB)', borderRadius: 16, padding: '40px 36px', marginBottom: 32, border: '1px solid var(--border)' }}>
         <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', marginBottom: 8, lineHeight: 1.2 }}>
-          We're Moving Across<br />the World ✈️
+          We're Moving
         </h2>
         <p style={{ color: 'var(--sub)', fontSize: '1.05rem', maxWidth: 500, lineHeight: 1.6, marginBottom: 20 }}>
-          Quality items at great prices — everything must find a new home before we head to India. Browse, pick what you love, and let us know!
+          If you like something on here let us know!
         </p>
         <div style={{ display: 'flex', gap: 12, fontSize: '0.85rem', color: 'var(--sub)', flexWrap: 'wrap' }}>
           <Badge color="var(--success)" bg="var(--success-bg)">{items.filter(i => i.status !== 'sold').length} items available</Badge>
