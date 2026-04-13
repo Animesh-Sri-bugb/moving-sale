@@ -19,7 +19,7 @@ export default function StoreView({ items, onSelectItem }) {
           We're Moving
         </h2>
         <p style={{ color: 'var(--sub)', fontSize: '1.05rem', maxWidth: 500, lineHeight: 1.6, marginBottom: 20 }}>
-          If you like something on here let us know!
+          As part of our upcoming move, we’re giving away or selling most of our items at low prices. Please arrange pickup by April 24 at the latest, if possible, ideally by 20th. If you know of a non-profit or a community organization that could use any of these items, you’re welcome to take them and donate.
         </p>
         <div style={{ display: 'flex', gap: 12, fontSize: '0.85rem', color: 'var(--sub)', flexWrap: 'wrap' }}>
           <Badge color="var(--success)" bg="var(--success-bg)">{items.filter(i => i.status !== 'sold').length} items available</Badge>
