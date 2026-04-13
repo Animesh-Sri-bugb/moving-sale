@@ -3,6 +3,20 @@ import emailjs from '@emailjs/browser';
 import { Btn, Input, Badge } from './UI';
 import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY, SELLER_NAME } from '../config/emailjs';
 
+// Auto-link URLs in text
+function Linkify({ children }) {
+  if (typeof children !== 'string') return children;
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/g;
+  const parts = children.split(urlRegex);
+  return parts.map((part, i) => {
+    if (part.match(urlRegex)) {
+      const href = part.startsWith('http') ? part : `https://${part}`;
+      return <a key={i} href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', wordBreak: 'break-all' }}>{part}</a>;
+    }
+    return part;
+  });
+}
+
 export default function DetailView({ item, onBack, onInquiry, showToast }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
@@ -72,7 +86,7 @@ export default function DetailView({ item, onBack, onInquiry, showToast }) {
           <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: '2rem', color: 'var(--accent)', marginBottom: 16 }}>
             {item.price === 0 ? 'Free' : `$${item.price}`}
           </p>
-          <p style={{ color: 'var(--sub)', lineHeight: 1.7, marginBottom: 28, fontSize: '0.95rem' }}>{item.description}</p>
+          <p style={{ color: 'var(--sub)', lineHeight: 1.7, marginBottom: 28, fontSize: '0.95rem' }}><Linkify>{item.description}</Linkify></p>
 
           {!sent ? (
             <div style={{ background: 'var(--warm)', borderRadius: 14, padding: 24, border: '1px solid var(--border)' }}>
